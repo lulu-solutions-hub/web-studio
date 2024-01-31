@@ -4,7 +4,11 @@
 
 <template>
   <div>
-    <p>sdf sdf</p>
+    <Monitor/>
+    <p>fsdf</p>
+    <p>fsdf</p>
+    <p>fsdf</p>
+    <p>fsdf</p>
   </div>
 </template>
 

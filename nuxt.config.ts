@@ -51,6 +51,10 @@ export default defineNuxtConfig({
       'process.env.DEBUG': false,
     },
   },
+  devServer: {
+    host: '0.0.0.0',
+    port: 3001
+  },
 
   nitro: {
     compressPublicAssets: true,
@@ -66,5 +70,20 @@ export default defineNuxtConfig({
       '/old-trade/**': {ssr: true}
     }
   },
-  ssr: true
+  ssr: true,
+
+  // render: {
+  //   bundleRenderer: {
+  //     directives: {
+  //       bg: function (vnode: any, dir: any) {
+  //         const style = vnode.data.style || (vnode.data.style = {})
+  //         style.backgroundColor = '#ff0016'
+  //       }
+  //     }
+  //   }
+  // },
+
+  plugins: [
+    '~/plugins/directives.ts'
+  ]
 })
