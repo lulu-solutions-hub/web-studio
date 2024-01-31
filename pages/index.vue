@@ -5,10 +5,6 @@
 <template>
   <div>
     <Monitor/>
-    <p>fsdf</p>
-    <p>fsdf</p>
-    <p>fsdf</p>
-    <p>fsdf</p>
   </div>
 </template>
 
