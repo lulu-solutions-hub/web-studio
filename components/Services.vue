@@ -39,7 +39,7 @@
                 <v-card-title class="pt-8 px-6 fz-28 font-weight-medium mb-9 pb-0">{{ service.title }}</v-card-title>
                 <v-card-text class="fz-24 lh-140 text-center text-textGray px-6 pb-0" :style="`margin-bottom: 38px`">{{ service.text }}</v-card-text>
                 <v-card-actions>
-                  <div class="pt-6 pb-3 px-11 rounded-lg bg-mainBlack mb-n10" :style="`z-index: 1000000 !important`">
+                  <div class="pt-6 pb-3 px-11 rounded-lg bg-mainBlack mb-n10" style="z-index: 1000000; position: relative">
                     <span class="fz-48 lh-1">{{service.price}}</span>
                   </div>
                 </v-card-actions>
