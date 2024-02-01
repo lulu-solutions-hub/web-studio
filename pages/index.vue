@@ -4,7 +4,8 @@
 
 <template>
   <div>
-    <Monitor/>
+    <Monitor :style="`margin-bottom: 136px`"/>
+    <Services/>
   </div>
 </template>
 

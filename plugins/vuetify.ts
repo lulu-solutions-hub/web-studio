@@ -4,6 +4,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import * as labsComponents from 'vuetify/labs/components';
 
+
 export default defineNuxtPlugin((context) => {
   const locale = useCookie('locale');
   const vuetify = createVuetify({
@@ -18,10 +19,16 @@ export default defineNuxtPlugin((context) => {
     directives,
     ssr: true,
     theme: {
-      defaultTheme: 'light',
+      defaultTheme: 'myCustomTheme',
       themes: {
-        dark: {
-
+        myCustomTheme: {
+          colors: {
+            background: '#1A1A1A',
+            mainGray: '#373738',
+            mainBlack: '#161618',
+            mainViolet: '#6034BB',
+            textGray: '#9F9F9F',
+          }
         }
       }
     },

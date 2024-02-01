@@ -13,7 +13,7 @@
 <template>
   <section class="background">
     <v-container class="d-flex justify-center container-main px-0" fluid>
-      <v-card :height="584" :max-width="1043" class="bg-white w-100 pa-4 monitor-border mt-12" rounded="lg">
+      <v-card :height="584" :max-width="1043" class="bg-mainGray w-100 pa-4 mt-12" rounded="lg">
         <v-responsive class="bg-white h-100 px-8 px-lg-16 pt-5">
           <v-row no-gutters>
             
@@ -27,7 +27,7 @@
                     <v-row class="justify-space-between" dense>
                       <v-col v-for="(filter, index) in rewardFilters" :key="index" class="flex-0-0 fz-20" cols="auto">
                         <v-item v-slot="{ isSelected, toggle }" :value="filter">
-                          <span :class="isSelected ? 'text-deep-purple-accent-4' : ''" class="cursor-pointer" @click="toggle">{{ filter }}</span>
+                          <span :class="isSelected ? 'text-mainViolet' : ''" class="cursor-pointer font-weight-medium fz-18" @click="toggle">{{ filter }}</span>
                         </v-item>
                       </v-col>
                     </v-row>
@@ -53,14 +53,6 @@
     background-size: contain;
     height: 982px;
     width: 100%;
-    background: #1A1A1A url('../public/img/monitor.png') no-repeat top center;
-  }
-  
-  .monitor-border {
-    background-color: #373738 !important;
-  }
-  
-  menu-btn {
-    color:
+    background: url('../public/img/monitor.png') no-repeat top center;
   }
 </style>
