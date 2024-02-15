@@ -6,6 +6,7 @@
   <div>
     <Monitor :style="`margin-bottom: 136px`"/>
     <Services/>
+    <WhyUs/>
   </div>
 </template>
 
