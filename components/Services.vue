@@ -53,7 +53,7 @@
 <style lang="scss" scoped>
   .background {
     background-size: contain;
-    height: 982px;
+    height: 1020px;
     width: 100%;
     background: url('../public/svg/services_background.svg') no-repeat top center;
   }
