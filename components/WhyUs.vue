@@ -4,28 +4,28 @@
 
 <template>
   <section class="background position-relative">
-    <v-container fluid>
-      <v-row>
+    <v-row>
+      <v-col cols="12">
         <v-col class="d-flex justify-center" cols="12">
-          <v-container class="container-main" fluid>
-            <h2 class="fz-48 subtitle text-white font-weight-medium lh-1 mb-11">Why us?</h2>
-          </v-container>
+          <h2 class="fz-48 subtitle text-white font-weight-medium lh-1 mb-11">Services</h2>
         </v-col>
         <v-col cols="12">
-          <v-container fluid>
-            <v-row>
-              <v-spacer/>
-              <v-col cols="6" style="z-index: 2">
-                <v-card class="card-bg" height="743"></v-card>
-              </v-col>
-            </v-row>
-          </v-container>
+          <div class="card-bg" style="z-index: 1000;">
+            <v-container class="container-main" fluid>
+              <v-row no-gutters>
+
+                <v-col cols="12">
+
+                </v-col>
+              </v-row>
+            </v-container>
+          </div>
         </v-col>
-      </v-row>
-      <v-sheet location="right top" position="absolute" width="324">
+      </v-col>
+      <v-sheet location="right top" position="absolute" width="324" style="z-index: -1">
         <v-img src="/svg/whyus/cat.svg" width="324"></v-img>
       </v-sheet>
-    </v-container>
+    </v-row>
   </section>
 </template>
 
@@ -38,7 +38,10 @@
   }
 
   .card-bg {
-    backdrop-filter: blur(50px) !important;
-    filter: drop-shadow(0px 1px 7.7px rgba(0, 0, 0, 0.10)) !important;
+    height: 100%;
+    background-image: url('http://i.imgur.com/9HMnxKs.png');
+    background-repeat: repeat-y;
+    background-size: 50% auto;
+    background-position: right;
   }
 </style>
