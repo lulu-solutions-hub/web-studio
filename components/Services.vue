@@ -38,7 +38,7 @@
               <v-sheet class="d-flex flex-column h-100 bg-transparent align-center mx-auto" max-width="507">
                 <v-card class="d-flex flex-column align-center overflow-visible flex-grow-1 service-card" rounded="xl">
                   <v-card-title class="pt-8 px-6 fz-28 font-weight-medium mb-9 pb-0 text-white">{{ service.title }}</v-card-title>
-                  <v-card-text :style="`margin-bottom: 80px`" class="fz-24 lh-140 text-center text-textGray px-6 pb-0">{{ service.text }}</v-card-text>
+                  <v-card-text :style="`margin-bottom: 80px`" class="fz-24 lh-140 text-center text-textGrey px-6 pb-0">{{ service.text }}</v-card-text>
                 </v-card>
                 <v-img :height="76" :width="200" class="mt-n10 flex-grow-0" :src="service.src" style="position: relative"></v-img>
               </v-sheet>

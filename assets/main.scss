@@ -14,6 +14,9 @@ body {
   line-height: 140% !important;
 }
 
+.lh-180 {
+  line-height: 180% !important;
+}
 .lh-200 {
   line-height: 200% !important;
 }
@@ -136,9 +139,6 @@ body {
 .fz-48 {
   font-size: 48px !important;
   font-weight: 600;
-  @media (max-width: 1377px) {
-    font-size: 32px !important;
-  }
   @media (max-width: 600px) {
     font-size: 24px !important;
   }

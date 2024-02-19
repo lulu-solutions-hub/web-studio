@@ -27,7 +27,7 @@ export default defineNuxtPlugin((context) => {
             mainGray: '#373738',
             mainBlack: '#161618',
             mainViolet: '#6034BB',
-            textGray: '#9F9F9F',
+            textGrey: '#9F9F9F',
           }
         }
       }
