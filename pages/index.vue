@@ -8,7 +8,8 @@ import AboutUs from "~/components/AboutUs.vue";
     <Monitor :style="`margin-bottom: 136px`"/>
     <Services/>
     <WhyUs/>
-    <AboutUs/>
+    <AboutUs style="margin-bottom: 100px"/>
+    <Our style="margin-bottom: 180px"/>
   </div>
 </template>
 
