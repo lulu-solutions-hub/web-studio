@@ -37,7 +37,7 @@
             </v-col>
             
             <v-col class="d-flex flex-column align-center h-100" cols="12">
-              <v-img :max-width="539" class="mb-8 w-100" src="/public/img/monitor-lulu.png"/>
+              <v-img :max-width="539" class="mb-8 w-100" src="/img/monitor-lulu.png"/>
               <span class="fz-32 mb-5">Studio</span>
               <span class="fz-18">Where Design Meets Function</span>
             </v-col>
@@ -53,6 +53,6 @@
     background-size: contain;
     height: 982px;
     width: 100%;
-    background: url('../public/img/monitor.png') no-repeat top center;
+    background: url('/img/monitor.png') no-repeat top center;
   }
 </style>

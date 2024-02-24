@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <section class="background">
+  <section>
     <v-container class="container-main" fluid>
       <v-row no-gutters>
         <v-col class="d-flex justify-center" cols="12">

@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+  import { useDisplay } from "vuetify";
+
+  const display = ref(useDisplay())
+
   const texts = reactive([
     {
       main: "Complete creativity and individuality",
@@ -20,9 +24,9 @@
 </script>
 
 <template>
-  <section class="background position-relative">
+  <section class="position-relative">
     <!--WHY US-->
-    <v-container class="container-main" fluid>
+    <v-container class="container-main pb-6" fluid>
       <v-row>
         <v-col cols="12">
           <h2 class="fz-48 subtitle text-white font-weight-medium lh-1 text-center">Why us?</h2>
@@ -31,13 +35,13 @@
     </v-container>
 
     <!--COLUMNS-->
-    <v-container fluid>
+    <v-container class="pr-4 pl-4 pr-md-0 py-0" fluid>
       <v-row>
 
         <!--LEFT-->
-        <v-col cols="6">
-          <v-card class="container-50 bg-transparent" style="margin: 0 0 0 auto;" variant="text">
-            <v-container>
+        <v-col cols="12" md="6" order="2" order-md="1">
+          <v-card :class="{'column-right container-50': display.mdAndUp}" variant="text">
+
               <v-row class="mb-6">
                 <v-col v-for="(text, id) in texts" :key="id" cols="12">
                   <v-avatar :size="15" class="mr-3">
@@ -52,26 +56,39 @@
                   <span class="text-white fz-18 font-weight-medium ls-normal">Our team</span> consists of professionals who are responsible and passionate about their work. Trying as much as possible to do my work perfectly and qualitatively.
                 </p>
               </div>
-            </v-container>
+
           </v-card>
         </v-col>
 
         <!--RIGHT-->
-        <v-col cols="6">
-          <v-card variant="text" class="rounded-xl pl">
-            <v-img src="/svg/whyus/card.svg" cover max-height="613" class="">
-              <v-container class="container-50 pl-12 pt-16" style="margin: auto 0 0 0; padding-bottom: 73px">
-                <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
-                <v-text-field label="Name*" variant="underlined" class="text-textGrey mb-6" base-color="white"></v-text-field>
-                <v-text-field label="Number*" variant="underlined" class="text-textGrey mb-6" base-color="white"></v-text-field>
-                <v-text-field label="Tell us about your idea" variant="underlined" class="text-textGrey" base-color="white"></v-text-field>
-                <v-checkbox class="ml-n2" density="compact" color="red">
-                  <template v-slot:label>
-                    <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
-                  </template>
-                </v-checkbox>
-              </v-container>
-            </v-img>
+        <v-col class="rounded-s-xl" cols="12" md="6" order="1" order-md="2">
+          <v-card class="bg-blur h-100" :rounded="display.mdAndUp ? 's-xl' : ''" variant="text">
+            <v-container class="pl-4 pl-md-12 pt-16 h-100" :class="{'column-left container-50': display.mdAndUp}" style="padding-bottom: 77px">
+              <v-card class="h-100 d-flex flex-column" variant="text">
+                <!--FIELDS-->
+                <div>
+                  <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
+                  <v-text-field base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
+                  <v-text-field base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
+                  <v-text-field base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
+                  <v-checkbox color="red" density="compact" class="ml-n1">
+                    <template v-slot:label>
+                      <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
+                    </template>
+                  </v-checkbox>
+                </div>
+                <!--SPACER-->
+                <div class="d-flex flex-column flex-grow-1"/>
+                <!--SEND-->
+                <div class="d-flex justify-space-between">
+                  <div class="d-flex flex-0-0 align-center">
+                    <v-img height="37" src="/svg/attach.svg" class="mr-4" width="37"></v-img>
+                    <span class="text-white fz-20 font-weight-regular">Add file</span>
+                  </div>
+                  <v-btn class="ls-normal text-none fz-20" min-width="144" size="large" variant="outlined" color="#FFF">Send</v-btn>
+                </div>
+              </v-card>
+            </v-container>
           </v-card>
         </v-col>
       </v-row>
@@ -104,5 +121,19 @@
 
   .container-50 {
     max-width: 521px;
+  }
+
+  .column-left {
+    margin: auto 0 0 0;
+  }
+
+  .column-right {
+    margin: 0 0 0 auto;
+  }
+
+  .bg-blur {
+    backdrop-filter: blur(50px);
+    background-color: rgba(255, 255, 255, 0.14);
+    border: 3px solid rgba(255, 255, 255, 0.05);
   }
 </style>

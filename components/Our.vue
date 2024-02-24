@@ -4,8 +4,8 @@
   const display = ref(useDisplay())
 
   const texts = reactive([
-    { title: "Our team", subtitle: "We are ready to make the site even\nmore simple, convenient and logical", cols: 6 },
-    { title: "Our Mission", subtitle: "We energize websites through design\nthat inspires admiration and reliability.", cols: 6 },
+    { title: "Our team", subtitle: "We are ready to make the site even\nmore simple, convenient and logical", cols: "auto" },
+    { title: "Our Mission", subtitle: "We energize websites through design\nthat inspires admiration and reliability.", cols: "auto" },
     { title: "Our Values", subtitle: "Team. Client. Innovations. Responsibility..", cols: 12 },
   ]);
 
@@ -13,7 +13,7 @@
 
 <template>
   <v-container class="container-main" fluid>
-    <v-row class="my-n7 my-md-n0">
+    <v-row class="my-n7 my-md-n0 justify-space-between">
       <v-col v-for="(text, id) in texts" :key="id" :md="text.cols" cols="12" class="py-7 py-md-3">
         <v-card class="py-5 py-md-0 mx-auto" :class="{'neon-border' : display.smAndDown}" :variant="display.smAndDown ? 'outlined' : 'text'" :max-width="400">
           <v-card-item class="pa-0">

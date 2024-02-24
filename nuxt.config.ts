@@ -32,9 +32,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  define: {
-    'process.env.DEBUG': false,
-  },
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -42,7 +39,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    //...
+    'nuxt-anchorscroll',
   ],
 
   vite: {
