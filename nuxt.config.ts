@@ -5,6 +5,10 @@ import path from "path";
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  plugins: [
+    '~/plugins/directives',
+  ],
+
   app: {
     head: {
       title: 'Web studio',
@@ -78,15 +82,4 @@ export default defineNuxtConfig({
     }
   },
   ssr: true,
-
-  // render: {
-  //   bundleRenderer: {
-  //     directives: {
-  //       bg: function (vnode: any, dir: any) {
-  //         const style = vnode.data.style || (vnode.data.style = {})
-  //         style.backgroundColor = '#ff0016'
-  //       }
-  //     }
-  //   }
-  // },
 })

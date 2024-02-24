@@ -1,3 +1,4 @@
+import type { DirectiveBinding } from "vue";
 import {createVuetify} from "vuetify";
 
 import * as components from 'vuetify/components';
@@ -8,6 +9,9 @@ import * as labsComponents from 'vuetify/labs/components';
 export default defineNuxtPlugin((context) => {
   const locale = useCookie('locale');
   const vuetify = createVuetify({
+    styles: {
+      configFile: 'src/styles/settings.scss',
+    },
     locale: {
       locale: locale.value as string,
       fallback: 'en',

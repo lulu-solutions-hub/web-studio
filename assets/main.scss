@@ -17,6 +17,7 @@ body {
 .lh-180 {
   line-height: 180% !important;
 }
+
 .lh-200 {
   line-height: 200% !important;
 }
@@ -162,4 +163,13 @@ body {
 
 .subtitle {
   font-family: 'Viga';
+}
+
+.neon-border {
+  box-shadow: 0 0 2px #fff,
+  0 0 5px #fff,
+  0 0 5px #6D30E9,
+  0 0 5px #6D30E9,
+  0 0 5px #6D30E9,
+  inset 0 0 10px #6D30E9;
 }
