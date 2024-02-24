@@ -5,9 +5,9 @@ import AboutUs from "~/components/AboutUs.vue";
 
 <template>
   <div>
-    <Monitor :style="`margin-bottom: 136px`"/>
-    <Services/>
-    <WhyUs/>
+    <Monitor style="margin-bottom: 136px"/>
+    <Services style="margin-bottom: 100px"/>
+    <WhyUs style="margin-bottom: 100px"/>
     <AboutUs style="margin-bottom: 100px"/>
     <Our style="margin-bottom: 180px"/>
   </div>
