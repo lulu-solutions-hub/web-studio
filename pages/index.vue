@@ -6,7 +6,7 @@ import Footer from "~/components/Footer.vue";
 
 <template>
   <div>
-    <Monitor style="margin-bottom: 136px"/>
+    <Monitor style="margin-bottom: 136px" id="monitor"/>
     <Services style="margin-bottom: 100px" id="services"/>
     <WhyUs style="margin-bottom: 100px" id="why-us"/>
     <AboutUs style="margin-bottom: 100px" id="about-us"/>
