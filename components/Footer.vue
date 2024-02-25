@@ -2,9 +2,21 @@
 
   import { useDisplay } from "vuetify";
 
+  interface FooterLinks {
+    name: string;
+    link?: string;
+    blank?: boolean;
+    active?: boolean;
+  }
+
+  interface FooterItem {
+    name: string;
+    lists: FooterLinks[];
+  }
+
   const { mobile } = useDisplay();
 
-  const footerItems = [
+  const footerItems: FooterItem[] = [
     {
       name: "Contacts",
       lists: [
@@ -16,9 +28,9 @@
     {
       name: "Social networks",
       lists: [
-        { name: "Instagram", link: "https://www.google.com.ua/?hl=uk", blank: true },
-        { name: "Facebook", link: "https://www.google.com.ua/?hl=uk", blank: true },
-        { name: "Linkedin", link: "https://www.google.com.ua/?hl=uk", blank: true },
+        { name: "Instagram", link: "", blank: true },
+        { name: "Facebook", link: "", blank: true },
+        { name: "Linkedin", link: "", blank: true },
       ]
     },
     {
@@ -66,7 +78,7 @@
                     <v-list class="bg-transparent py-0" density="comfortable">
                       <v-list-item v-for="(route, routeId) in item.lists" :key="routeId" class="pa-0 fz-14 font-weight-regular route">
                         <div class="d-inline-block">
-                          <nuxt-link v-if="route?.link" :href="`${route?.link}`" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize" @click="scrollToAnchor(`${item?.link}`)">
+                          <nuxt-link v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize" @click="scrollToAnchor(route?.link)">
                             {{ route.name }}
                           </nuxt-link>
                           <span v-else class="text-textGrey text-break fz-20 lh-200 text-capitalize">
@@ -95,7 +107,7 @@
                         <template v-for="route in item.lists" :key="route.name">
                           <v-col cols="12">
                             <div class="d-inline-block">
-                              <nuxt-link v-if="route?.link" :href="`${route?.link}`" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize" @click="scrollToAnchor(`${item?.link}`)">
+                              <nuxt-link v-if="route?.link" :href="`${route?.link}`" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize" @click="scrollToAnchor(`${route?.link}`)">
                                 {{ route.name }}
                               </nuxt-link>
                               <span v-else class="text-textGrey text-break fz-20 lh-200 text-capitalize">
@@ -146,10 +158,6 @@
 
   .v-list-item--density-compact.v-list-item--one-line {
     min-height: 0;
-  }
-
-  .copyright {
-    color: rgba(255, 255, 255, 0.70);
   }
 
   .disabled-link {

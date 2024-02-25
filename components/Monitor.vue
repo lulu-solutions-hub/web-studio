@@ -1,13 +1,41 @@
 <script lang="ts" setup>
+  import { onMounted } from "vue";
+
   const enum RewardsFilters {
     HOME = 0,
     STAGES = 1,
     PRICE = 2,
     CONTACTS = 3
   }
-  
-  const rewardFilters = ["Home", "Stages", "Price", "Contacts"]
-  const selectedFilter = ref(RewardsFilters.HOME)
+
+  const { scrollToAnchor } = useAnchorScroll({
+    toTop: {
+      scrollOptions: {
+        behavior: 'auto',
+        offsetTop: 100,
+      }
+    },
+  });
+
+  const rewardFilters = reactive([
+    { name: "Home", link: "#monitor" },
+    { name: "Services", link: "#services" },
+    { name: "Why us", link: "#why-us" },
+    { name: "About us", link: "#about-us" },
+  ]);
+
+  const selectedFilter = ref();
+
+  const route = useRoute();
+
+  watchPostEffect(() => {
+    const link = rewardFilters.findIndex((filter) => filter.link == route.hash);
+    if (link != -1) {
+      selectedFilter.value = link;
+    } else {
+      selectedFilter.value = 0;
+    }
+  });
 </script>
 
 <template>
@@ -16,7 +44,7 @@
       <v-card :height="584" :max-width="1043" class="bg-mainGray w-100 pa-4 mt-12" rounded="lg">
         <v-responsive class="bg-white h-100 px-8 px-lg-16 pt-5">
           <v-row no-gutters>
-            
+
             <v-col class="mb-8" cols="12">
               <v-row align="center">
                 <v-col>
@@ -27,7 +55,9 @@
                     <v-row class="justify-space-between" dense>
                       <v-col v-for="(filter, index) in rewardFilters" :key="index" class="flex-0-0 fz-20" cols="auto">
                         <v-item v-slot="{ isSelected, toggle }" :value="filter">
-                          <span :class="isSelected ? 'text-mainViolet' : ''" class="cursor-pointer font-weight-medium fz-18" @click="toggle">{{ filter }}</span>
+                          <nuxt-link :class="isSelected ? 'text-mainViolet' : 'text-black'" :href="`${filter.link}`" class="link cursor-pointer font-weight-medium fz-18" @click="scrollToAnchor(filter.link)">
+                            <span @click="toggle">{{ filter.name }}</span>
+                          </nuxt-link>
                         </v-item>
                       </v-col>
                     </v-row>
@@ -35,7 +65,7 @@
                 </v-col>
               </v-row>
             </v-col>
-            
+
             <v-col class="d-flex flex-column align-center h-100" cols="12">
               <v-img :max-width="539" class="mb-8 w-100" src="/img/monitor-lulu.png"/>
               <span class="fz-32 mb-5">Studio</span>
