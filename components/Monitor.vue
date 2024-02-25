@@ -26,11 +26,16 @@
 
   const selectedFilter = ref();
 
-  const route = useRoute()
+  const route = useRoute();
 
-  watchPostEffect(() =>{
-    selectedFilter.value = rewardFilters.findIndex((filter) => filter.link == route.hash)
-  })
+  watchPostEffect(() => {
+    const link = rewardFilters.findIndex((filter) => filter.link == route.hash);
+    if (link != -1) {
+      selectedFilter.value = link;
+    } else {
+      selectedFilter.value = 0;
+    }
+  });
 </script>
 
 <template>
@@ -50,7 +55,7 @@
                     <v-row class="justify-space-between" dense>
                       <v-col v-for="(filter, index) in rewardFilters" :key="index" class="flex-0-0 fz-20" cols="auto">
                         <v-item v-slot="{ isSelected, toggle }" :value="filter">
-                          <nuxt-link :href="`${filter.link}`" :class="isSelected ? 'text-mainViolet' : 'text-black'" class="link cursor-pointer font-weight-medium fz-18" @click="scrollToAnchor(filter.link)">
+                          <nuxt-link :class="isSelected ? 'text-mainViolet' : 'text-black'" :href="`${filter.link}`" class="link cursor-pointer font-weight-medium fz-18" @click="scrollToAnchor(filter.link)">
                             <span @click="toggle">{{ filter.name }}</span>
                           </nuxt-link>
                         </v-item>
