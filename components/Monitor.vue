@@ -1,13 +1,4 @@
 <script lang="ts" setup>
-  import { onMounted } from "vue";
-
-  const enum RewardsFilters {
-    HOME = 0,
-    STAGES = 1,
-    PRICE = 2,
-    CONTACTS = 3
-  }
-
   const { scrollToAnchor } = useAnchorScroll({
     toTop: {
       scrollOptions: {
@@ -55,7 +46,7 @@
                     <v-row class="justify-space-between" dense>
                       <v-col v-for="(filter, index) in rewardFilters" :key="index" class="flex-0-0 fz-20" cols="auto">
                         <v-item v-slot="{ isSelected, toggle }" :value="filter">
-                          <nuxt-link :class="isSelected ? 'text-mainViolet' : 'text-black'" :href="`${filter.link}`" class="link cursor-pointer font-weight-medium fz-18" @click="scrollToAnchor(filter.link)">
+                          <nuxt-link :class="isSelected ? 'text-mainViolet' : 'text-black custom-link'" :href="`${filter.link}`" class="link cursor-pointer font-weight-medium fz-18" @click="scrollToAnchor(filter.link)">
                             <span @click="toggle">{{ filter.name }}</span>
                           </nuxt-link>
                         </v-item>
@@ -84,5 +75,14 @@
     height: 982px;
     width: 100%;
     background: url('/img/monitor.png') no-repeat top center;
+  }
+
+  .custom-link {
+    border-bottom: 2px solid white;
+    transition: 0.3s ease;
+    &:hover{
+      padding: 0 0 2px 0;
+      border-color: black;
+    }
   }
 </style>
