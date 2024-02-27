@@ -77,7 +77,7 @@
                     <v-list class="bg-transparent py-0" density="comfortable">
                       <v-list-item v-for="(route, routeId) in item.lists" :key="routeId" class="pa-0 fz-14 font-weight-regular route">
                         <div class="d-inline-block">
-                          <nuxt-link v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize" @click="scrollToAnchor(route?.link)">
+                          <nuxt-link v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize custom-link" @click="scrollToAnchor(route?.link)">
                             {{ route.name }}
                           </nuxt-link>
                           <span v-else class="text-textGrey text-break fz-20 lh-200 text-capitalize">
@@ -147,10 +147,6 @@
     }
   }
 
-  .subtitle {
-    color: rgba(255, 255, 255, 0.80);
-  }
-
   .route {
     opacity: 0.8;
   }
@@ -162,5 +158,15 @@
   .disabled-link {
     opacity: 0.3 !important;
     cursor: default !important;
+  }
+
+  .custom-link {
+    border-bottom: 2px solid transparent;
+    transition: 0.3s ease;
+
+    &:hover {
+      padding: 0 0 2px 0;
+      border-color: white;
+    }
   }
 </style>
