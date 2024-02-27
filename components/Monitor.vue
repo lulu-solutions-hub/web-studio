@@ -39,12 +39,12 @@
 </script>
 
 <template>
+  <div class="wrapper">
   <section class="background">
     <v-container class="d-flex justify-center container-main px-0" fluid>
       <v-card :height="584" :max-width="1043" class="bg-mainGray w-100 pa-4 mt-12" rounded="lg">
         <v-responsive class="bg-white h-100 px-8 px-lg-16 pt-5">
           <v-row no-gutters>
-
             <v-col class="mb-8" cols="12">
               <v-row align="center">
                 <v-col>
@@ -76,13 +76,21 @@
       </v-card>
     </v-container>
   </section>
+  </div>
 </template>
 
 <style scoped>
   .background {
     background-size: contain;
-    height: 982px;
+    padding-bottom: 250px;
+    //height: 990px;
     width: 100%;
     background: url('/img/monitor.png') no-repeat top center;
+  }
+
+  .wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
   }
 </style>
