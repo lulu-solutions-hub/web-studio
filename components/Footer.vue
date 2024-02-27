@@ -21,7 +21,7 @@
       name: "Contacts",
       lists: [
         { name: "Ukraine" },
-        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969" },
+        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969"},
         { name: "lulu.solutions.hub@gmail.com",  link: "mailto:lulu.solutions.hub@gmail.com"},
       ],
     },
@@ -77,9 +77,9 @@
                     <v-list class="bg-transparent py-0" density="comfortable">
                       <v-list-item v-for="(route, routeId) in item.lists" :key="routeId" class="pa-0 fz-14 font-weight-regular route">
                         <div class="d-inline-block">
-                          <nuxt-link v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize custom-link" @click="scrollToAnchor(route?.link)">
+                          <a v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize custom-link" @click="scrollToAnchor(route?.link)" >
                             {{ route.name }}
-                          </nuxt-link>
+                          </a>
                           <span v-else class="text-textGrey text-break fz-20 lh-200 text-capitalize">
                             {{ route.name }}
                           </span>
