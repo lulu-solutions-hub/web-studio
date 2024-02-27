@@ -21,16 +21,15 @@
       name: "Contacts",
       lists: [
         { name: "Ukraine" },
-        { name: "+38 (063) 818-79-69" },
-        { name: "luLuwebstudio@gmail.com", },
+        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969" },
+        { name: "lulu.solutions.hub@gmail.com",  link: "mailto:lulu.solutions.hub@gmail.com"},
       ],
     },
     {
       name: "Social networks",
       lists: [
         { name: "Instagram", link: "", blank: true },
-        { name: "Facebook", link: "", blank: true },
-        { name: "Linkedin", link: "", blank: true },
+        { name: "Telegram", link: "", blank: true },
       ]
     },
     {
