@@ -94,9 +94,10 @@
       </v-row>
     </v-container>
 
-    <v-sheet class="bg-transparent cat" location="top right" position="absolute">
-      <v-img :height="xs ? 115 : 158" src="/svg/whyus/cat.svg" width="auto"></v-img>
+    <v-sheet class="bg-transparent cat" location="top right" position="absolute" width="107">
+      <embed type="image/svg+xml" src="/svg/whyus/cat.svg" />
     </v-sheet>
+
     <v-sheet class="bg-transparent plants" location="top right" position="absolute" style="z-index: -1">
       <v-img :width="xs ? 300: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9"/>
     </v-sheet>
