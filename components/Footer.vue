@@ -66,7 +66,7 @@
 
               <!--LEFT COLUMN-->
               <v-col cols="auto" style="margin-right: 100px">
-                <v-img height="150" src="/svg/footer/cat.svg" width="165"></v-img>
+                <v-img height="150" src="/svg/footer/cat.svg" width="165" alt="lulu cat"></v-img>
               </v-col>
 
               <!--RIGHT COLUMN-->

@@ -99,7 +99,7 @@
     </v-sheet>
 
     <v-sheet class="bg-transparent plants" location="top right" position="absolute" style="z-index: -1">
-      <v-img :width="xs ? 170: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9"/>
+      <v-img :width="xs ? 170: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9" alt="lulu plants"/>
     </v-sheet>
   </section>
 </template>
