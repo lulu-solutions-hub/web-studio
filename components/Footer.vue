@@ -58,7 +58,7 @@
   <footer>
     <v-container :fluid="mobile" class="container-main px-4 px-lg-0 pt-12 pb-8">
       <v-row no-gutters>
-        <v-col class="mb-4" cols="12">
+        <v-col cols="12" style="margin-bottom: 100px" class="spacer">
 
           <!--DESKTOP-->
           <div class="hidden-sm-and-down">
@@ -124,8 +124,14 @@
           </div>
 
         </v-col>
+
         <v-col class="d-flex justify-center" cols="12">
-          <span class="fz-12 copyright text-center">All Rights Reserved</span>
+
+          <div class="d-flex flex-column align-center">
+            <p class="fz-20 text-textGrey">LULU Web Studio</p>
+            <p class="fz-20 text-textGrey">© 2024 | All rights reserved.</p>
+          </div>
+
         </v-col>
       </v-row>
     </v-container>
@@ -136,6 +142,12 @@
   .container {
     max-width: 966px;
     margin: 0 auto;
+  }
+
+  .spacer {
+    @media(max-width: 600px) {
+      margin-bottom: 30px !important;
+    }
   }
 
   .v-expansion-panel {

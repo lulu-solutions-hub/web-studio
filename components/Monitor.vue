@@ -1,12 +1,5 @@
 <script lang="ts" setup>
-  const { scrollToAnchor } = useAnchorScroll({
-    toTop: {
-      scrollOptions: {
-        behavior: 'auto',
-        offsetTop: 100,
-      }
-    },
-  });
+  const { scrollToAnchor } = useAnchorScroll();
 
   const rewardFilters = reactive([
     { name: "Home", link: "#monitor" },
@@ -74,8 +67,7 @@
   .background {
     background-size: contain;
     padding-bottom: 250px;
-  //height: 990px; width: 100%;
-    background: url('/img/monitor.png') no-repeat top center;
+  //height: 990px; width: 100%; background: url('/img/monitor.png') no-repeat top center;
   }
 
   .wrapper {
