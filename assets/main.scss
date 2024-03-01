@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400&family=Viga&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1A1A1A !important;
+  font-family: 'Vazirmatn';
+}
+
+.container-main {
+  max-width: 1062px !important;
+  margin: 0 auto;
+}
+
+.lh-140 {
+  line-height: 140% !important;
+}
+
+.lh-180 {
+  line-height: 180% !important;
+}
+
+.lh-200 {
+  line-height: 200% !important;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.ls-normal {
+  letter-spacing: normal !important;
+}
+
 .fz-10 {
   font-size: 10px !important;
 }
@@ -106,11 +142,7 @@
 }
 
 .fz-48 {
-  font-size: 48px;
-  font-weight: 600;
-  @media (max-width: 1377px) {
-    font-size: 32px !important;
-  }
+  font-size: 48px !important;
   @media (max-width: 600px) {
     font-size: 24px !important;
   }
@@ -121,13 +153,39 @@
 }
 
 .fz-18m {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .fz-24m {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .fz-32m {
-  font-size: 32px;
+  font-size: 32px !important;
+}
+
+.fz-48m {
+  font-size: 48px !important;
+}
+
+.subtitle {
+  font-family: 'Viga';
+}
+
+.neon-border {
+  box-shadow: 0 0 2px #fff,
+  0 0 7px #fff,
+  0 0 7px #6D30E9,
+  0 0 7px #6D30E9,
+  0 0 7px #6D30E9,
+  inset 0 0 10px #6D30E9;
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 13px #fff, 0 0 7px #6D30E9, 0 0 10px #6D30E9;
+}
+
+.link {
+  text-decoration: none !important;
 }

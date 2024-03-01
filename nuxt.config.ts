@@ -5,11 +5,15 @@ import path from "path";
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  plugins: [
+    '~/plugins/directives',
+  ],
+
   app: {
     head: {
-      title: 'Web studio',
+      title: 'LuLu Web studio',
       meta: [
-        {charset: 'utf-8'},
+        { charset: 'utf-8' },
         {
           name: 'viewport',
           content: 'width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1,viewport-fit=true'
@@ -28,9 +32,6 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  define: {
-    'process.env.DEBUG': false,
-  },
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
@@ -38,7 +39,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    //...
+    'nuxt-anchorscroll',
   ],
 
   vite: {
@@ -50,6 +51,17 @@ export default defineNuxtConfig({
     define: {
       'process.env.DEBUG': false,
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/colors.scss" as *;'
+        }
+      }
+    },
+  },
+  devServer: {
+    host: 'localhost',
+    port: 3000
   },
 
   nitro: {
@@ -61,10 +73,10 @@ export default defineNuxtConfig({
       crawlLinks: true
     },
     routeRules: {
-      '/': {prerender: true},
-      '/trade/**': {ssr: true},
-      '/old-trade/**': {ssr: true}
+      '/': { prerender: true },
+      '/trade/**': { ssr: true },
+      '/old-trade/**': { ssr: true }
     }
   },
-  ssr: true
+  ssr: true,
 })
