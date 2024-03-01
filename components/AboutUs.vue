@@ -1,5 +1,18 @@
 <script setup lang="ts">
-
+  useHead({
+    link: [{ rel: 'canonical', href: '' }],
+    title: "About Us - LULU Web Studio",
+    meta: [
+      {
+        name: 'description',
+        content: 'Learn about LULU Web Studio, a team of specialists dedicated to creating unique websites using advanced technologies. We aim to maximize the success of our clients’ businesses.'
+      },
+      {
+        name: 'keywords',
+        content: 'LULU Web Studio, web design, specialist team, advanced technologies, business development, Internet advertising, website creation'
+      }
+    ]
+  })
 </script>
 
 <template>

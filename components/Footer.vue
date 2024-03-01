@@ -21,7 +21,7 @@
       name: "Contacts",
       lists: [
         { name: "Ukraine" },
-        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969" },
+        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969"},
         { name: "lulu.solutions.hub@gmail.com",  link: "mailto:lulu.solutions.hub@gmail.com"},
       ],
     },
@@ -58,7 +58,7 @@
   <footer>
     <v-container :fluid="mobile" class="container-main px-4 px-lg-0 pt-12 pb-8">
       <v-row no-gutters>
-        <v-col class="mb-4" cols="12">
+        <v-col cols="12" style="margin-bottom: 100px" class="spacer">
 
           <!--DESKTOP-->
           <div class="hidden-sm-and-down">
@@ -66,7 +66,7 @@
 
               <!--LEFT COLUMN-->
               <v-col cols="auto" style="margin-right: 100px">
-                <v-img height="150" src="/svg/footer/cat.svg" width="165"></v-img>
+                <v-img height="150" src="/svg/footer/cat.svg" width="165" alt="lulu cat"></v-img>
               </v-col>
 
               <!--RIGHT COLUMN-->
@@ -77,9 +77,9 @@
                     <v-list class="bg-transparent py-0" density="comfortable">
                       <v-list-item v-for="(route, routeId) in item.lists" :key="routeId" class="pa-0 fz-14 font-weight-regular route">
                         <div class="d-inline-block">
-                          <nuxt-link v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize custom-link" @click="scrollToAnchor(route?.link)">
+                          <a v-if="route?.link" :href="route?.link" :target="route?.blank ? '_blank' : ''" class="link text-textGrey text-break fz-20 lh-200 text-capitalize custom-link" @click="scrollToAnchor(route?.link)" >
                             {{ route.name }}
-                          </nuxt-link>
+                          </a>
                           <span v-else class="text-textGrey text-break fz-20 lh-200 text-capitalize">
                             {{ route.name }}
                           </span>
@@ -124,8 +124,14 @@
           </div>
 
         </v-col>
+
         <v-col class="d-flex justify-center" cols="12">
-          <span class="fz-12 copyright text-center">All Rights Reserved</span>
+
+          <div class="d-flex flex-column align-center">
+            <p class="fz-20 text-textGrey">LULU Web Studio</p>
+            <p class="fz-20 text-textGrey">© 2024 | All rights reserved.</p>
+          </div>
+
         </v-col>
       </v-row>
     </v-container>
@@ -136,6 +142,12 @@
   .container {
     max-width: 966px;
     margin: 0 auto;
+  }
+
+  .spacer {
+    @media(max-width: 600px) {
+      margin-bottom: 30px !important;
+    }
   }
 
   .v-expansion-panel {

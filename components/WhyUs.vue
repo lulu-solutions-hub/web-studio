@@ -94,12 +94,12 @@
       </v-row>
     </v-container>
 
-    <v-sheet class="bg-transparent cat" location="top right" position="absolute" width="107">
+    <v-sheet class="bg-transparent cat" location="top right" position="absolute" :width="xs ? 80 : 107">
       <embed type="image/svg+xml" src="/svg/whyus/cat.svg" />
     </v-sheet>
 
     <v-sheet class="bg-transparent plants" location="top right" position="absolute" style="z-index: -1">
-      <v-img :width="xs ? 300: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9"/>
+      <v-img :width="xs ? 170: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9" alt="lulu plants"/>
     </v-sheet>
   </section>
 </template>
@@ -141,8 +141,11 @@
   .cat {
     right: 123px !important;
 
+    @media(max-width: 900px) {
+      right: 100px !important;
+    }
     @media(max-width: 600px) {
-      right: 10px !important;
+      right: 40px !important;
     }
   }
 </style>

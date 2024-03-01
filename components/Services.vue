@@ -1,5 +1,8 @@
 <script lang="ts" setup>
   import { reactive } from "vue";
+  import { useDisplay } from "vuetify";
+
+  const {xs} = useDisplay()
 
   const services = reactive([
     {
@@ -40,7 +43,7 @@
                   <v-card-title class="pt-8 px-6 fz-28 font-weight-medium mb-9 pb-0 text-white">{{ service.title }}</v-card-title>
                   <v-card-text :style="`margin-bottom: 80px`" class="fz-24 lh-140 text-center text-textGrey px-6 pb-0">{{ service.text }}</v-card-text>
                 </v-card>
-                <v-card :width="200" class="d-flex justify-center align-center mt-n10 pt-5 pb-3 px-4 bg-mainBlack custom-neon-border" height="76" style="position: relative" variant="outlined">
+                <v-card :width="xs ? 100 : 200" class="d-flex justify-center align-center mt-n10 pt-5 pb-3 px-4 bg-mainBlack custom-neon-border" :height="xs ? 50 : 76" style="position: relative" variant="outlined">
                   <span class="fz-48 font-weight-thin">+{{ service.price }}</span>
                 </v-card>
               </v-sheet>
