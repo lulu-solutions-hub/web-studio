@@ -60,8 +60,8 @@
 
 <template>
   <header>
-    <section class="background d-flex justify-center">
-      <v-card :height="h" :style="`margin-top: ${mt}px;`" :width="w" rounded="lg" variant="outlined">
+    <section class="background d-flex justify-center" :class="(display.height * 1.30 < display.width) ? '' : 'align-end'">
+      <v-card :height="h" :style="`margin-top: ${mt}px; margin-bottom:21%`" :width="w" rounded="lg" variant="outlined">
         <v-container class="d-flex justify-center pa-0 w-100 h-100" fluid>
           <!--<p class="text-white">{{ display.width }}</p>-->
           <v-card class="bg-mainGray h-100 w-100 pa-4" rounded="lg">
