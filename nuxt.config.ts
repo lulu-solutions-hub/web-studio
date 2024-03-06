@@ -40,7 +40,15 @@ export default defineNuxtConfig({
       });
     },
     'nuxt-anchorscroll',
+    'nuxt-gtag'
   ],
+
+  gtag: {
+    id: 'G-G4RPL0YYY6',
+    config: {
+      page_title: 'Lulu Web Studio'
+    },
+  },
 
   vite: {
     vue: {
