@@ -1,5 +1,9 @@
 <script lang="ts" setup>
+  import { useDisplay } from "vuetify";
+
   const { scrollToAnchor } = useAnchorScroll();
+
+  const display = ref(useDisplay());
 
   const rewardFilters = reactive([
     { name: "Home", link: "#monitor" },
@@ -34,15 +38,31 @@
         content: 'LULU Web Studio, web design, specialist team, advanced technologies, business development, website creation'
       }
     ]
-  })
+  });
+
+  const w = ref(0);
+  const h = ref(0);
+
+  watchEffect(() => {
+    if (display.value.height * 1.55 < display.value.width) {
+      w.value = display.value.height * 1.06;
+      h.value = display.value.height / 1.7;
+    } else {
+      w.value = display.value.width / 1.45;
+      h.value = display.value.width / 2.5;
+    }
+  });
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <section class="background">
-        <v-container class="d-flex justify-center container-main px-0" fluid>
-          <v-card :height="584" :max-width="1043" class="bg-mainGray w-100 pa-4 mt-12" rounded="lg">
+    <section class="background d-flex justify-center align-center">
+      <v-card :height="h" :width="w" rounded="lg" variant="outlined">
+        <v-container class="d-flex justify-center pa-0 w-100 h-100" fluid>
+          <!--<p class="text-white">{{ display.width }}</p>-->
+          <p class="text-white position-absolute">{{ display.height / 0.66 }}</p>
+
+          <v-card class="bg-mainGray h-100 w-100 pa-4" rounded="lg">
             <v-responsive class="bg-white h-100 px-8 px-lg-16 pt-5">
               <v-row no-gutters>
 
@@ -69,8 +89,8 @@
                 </v-col>
 
                 <!--IMAGE-->
-                <v-col class="d-flex flex-column align-center h-100" cols="12">
-                  <v-img :max-width="539" class="mb-8 w-100" src="/img/monitor-lulu.png" alt="Lulu web studio logo"/>
+                <v-col class="d-flex flex-column align-center h-100 w-100" cols="12">
+                  <v-img :max-width="539" alt="Lulu web studio logo" class="mb-8 w-100" src="/img/monitor-lulu.png"/>
                   <span class="fz-32 mb-5">Studio</span>
                   <span class="fz-18">Where Design Meets Function</span>
                 </v-col>
@@ -78,22 +98,19 @@
             </v-responsive>
           </v-card>
         </v-container>
-      </section>
-    </div>
+      </v-card>
+    </section>
   </header>
 </template>
 
 <style scoped>
   .background {
     background-size: contain;
-    padding-bottom: 250px;
-  //height: 990px; width: 100%; background: url('/img/monitor.png') no-repeat top center;
-  }
-
-  .wrapper {
     height: 100vh;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    background-image: url('/img/monitor.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
   }
 
   .custom-link {
