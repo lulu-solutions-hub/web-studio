@@ -46,10 +46,10 @@
   const mb = ref(0);
 
   watchEffect(() => {
-    if (display.value.height * 1.30 < display.value.width) {
+    if (display.value.height * 1.60 < display.value.width) {
       w.value = display.value.height * 1.08;
-      h.value = display.value.height / 1.60;
-      mt.value = display.value.height / 16;
+      h.value = display.value.height / 1.59;
+      mt.value = 64;
     } else {
       w.value = display.value.width / 1.45;
       h.value = display.value.width / 2.5;
@@ -60,8 +60,8 @@
 
 <template>
   <header>
-    <section class="background d-flex justify-center" :class="(display.height * 1.30 < display.width) ? '' : 'align-end'">
-      <v-card :height="h" :style="`margin-top: ${mt}px; margin-bottom:21%`" :width="w" rounded="lg" variant="outlined">
+    <section class="background d-flex justify-center" :class="(display.height * 1.60 < display.width) ? '' : 'align-end'">
+      <v-card :height="h" style="margin-bottom:21%" :width="w" rounded="lg" variant="outlined" class="mt-9 mt-xl-12">
         <v-container class="d-flex justify-center pa-0 w-100 h-100" fluid>
           <!--<p class="text-white">{{ display.width }}</p>-->
           <v-card class="bg-mainGray h-100 w-100 pa-4" rounded="lg">
