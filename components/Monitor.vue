@@ -46,14 +46,14 @@
   const mb = ref(0);
 
   watchEffect(() => {
-    if (display.value.height * 1.55 < display.value.width) {
-      w.value = display.value.height * 1.06;
-      h.value = display.value.height / 1.7;
-      mt.value = display.value.height / 380;
+    if (display.value.height * 1.30 < display.value.width) {
+      w.value = display.value.height * 1.08;
+      h.value = display.value.height / 1.60;
+      mt.value = display.value.height / 16;
     } else {
       w.value = display.value.width / 1.45;
       h.value = display.value.width / 2.5;
-      mt.value = display.value.width / 395;
+      mt.value = display.value.width / 2;
     }
   });
 </script>
@@ -61,7 +61,7 @@
 <template>
   <header>
     <section class="background d-flex justify-center">
-      <v-card :height="h" :style="`margin-top: ${mt}%;`" :width="w" rounded="lg" variant="outlined">
+      <v-card :height="h" :style="`margin-top: ${mt}px;`" :width="w" rounded="lg" variant="outlined">
         <v-container class="d-flex justify-center pa-0 w-100 h-100" fluid>
           <!--<p class="text-white">{{ display.width }}</p>-->
           <v-card class="bg-mainGray h-100 w-100 pa-4" rounded="lg">
@@ -70,11 +70,11 @@
 
                 <!--HEADER-->
                 <v-col class="mb-8" cols="12">
-                  <v-row align="center">
-                    <v-col>
+                  <v-row align="center" justify="space-between">
+                    <v-col cols="auto">
                       <span class="fz-24 font-weight-medium">LULU</span>
                     </v-col>
-                    <v-col cols="6" md="5">
+                    <v-col cols="8" md="6">
                       <v-item-group v-model="selectedFilter" mandatory>
                         <v-row class="justify-space-between" dense>
                           <v-col v-for="(filter, index) in rewardFilters" :key="index" class="flex-0-0 fz-20" cols="auto">
@@ -92,7 +92,7 @@
 
                 <!--IMAGE-->
                 <v-col class="d-flex flex-column align-center h-100 w-100" cols="12">
-                  <v-img :max-width="539" alt="Lulu web studio logo" class="mb-8 w-100" src="/img/monitor-lulu.png"/>
+                  <v-img max-width="50%" alt="Lulu web studio logo" class="mb-8 w-100" src="/img/monitor-lulu.png"/>
                   <span class="fz-32 mb-5">Studio</span>
                   <span class="fz-18">Where Design Meets Function</span>
                 </v-col>
