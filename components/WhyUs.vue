@@ -24,6 +24,27 @@
       secondary: "SEO increases brand visibility, attracts targeted traffic, reduces advertising costs, and contributes to the continuous improvement of marketing strategies."
     },
   ]);
+
+  const runtimeConfig = useRuntimeConfig();
+  const formattedText = ref(``);
+
+  const data = ref({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  watchEffect(() => {
+    formattedText.value = `Ім'я: ${ data.value.name }%0AТелефон: ${ data.value.phone }%0AПовідомлення: ${ data.value.message }`;
+  });
+
+  function sendMessage() {
+    const url = `https://api.telegram.org/bot${ runtimeConfig.public.telegramSecretApi }/sendMessage?chat_id=${ runtimeConfig.public.chatId }&message_thread_id=${ runtimeConfig.public.topicId }&parse_mode=Markdown&text=${ formattedText.value }`;
+    console.log(url)
+    const xht = new XMLHttpRequest();
+    xht.open("GET", url);
+    xht.send();
+  }
 </script>
 
 <template>
@@ -69,13 +90,13 @@
             <v-container :class="{'column-left container-50': display.mdAndUp}" class="pl-4 pl-md-12 pt-16 h-100" style="padding-bottom: 77px">
               <v-card class="h-100" variant="text">
                 <!--FIELDS-->
-                <v-form v-model="valid" action="/thanks" class="h-100 d-flex flex-column" data-netlify="true" data-netlify-honeypot="bot-field" netlify method="POST" name="contact">
+                <v-form v-model="valid" action="/thanks" class="h-100 d-flex flex-column" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="contact">
                   <div>
                     <input name="form-name" type="hidden" value="contact"/> <input name="bot-field" type="hidden"/>
                     <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
-                    <v-text-field :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
-                    <v-text-field :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
-                    <v-text-field :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.name" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.phone" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.message" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
                     <v-checkbox :rules="[v => !!v || 'consent is required']" class="ml-n1" color="red" density="compact">
                       <template v-slot:label>
                         <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
@@ -91,7 +112,7 @@
                       <v-img class="mr-4" height="37" src="/svg/attach.svg" width="37"></v-img>
                       <span class="text-white fz-20 font-weight-regular">Add file</span>
                     </div>
-                    <v-btn :disabled="!valid" class="ls-normal text-none fz-20" color="#FFF" min-width="144" size="large" type="submit" variant="outlined">Send</v-btn>
+                    <v-btn :disabled="!valid" class="ls-normal text-none fz-20" color="#FFF" min-width="144" size="large" type="submit" variant="outlined" @click="sendMessage">Send</v-btn>
                   </div>
                 </v-form>
               </v-card>

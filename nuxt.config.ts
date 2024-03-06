@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import path from "path";
 
 export default defineNuxtConfig({
@@ -36,8 +36,8 @@ export default defineNuxtConfig({
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
     'nuxt-anchorscroll',
   ],
@@ -79,4 +79,12 @@ export default defineNuxtConfig({
     }
   },
   ssr: true,
-})
+
+  runtimeConfig: {
+    public: {
+      telegramSecretApi: '6846175338:AAEyv8r6hjgJQkNRuiqCvaOui_EI-jbLXiw',
+      chatId: '-1002026815522',
+      topicId: '24'
+    }
+  }
+});
