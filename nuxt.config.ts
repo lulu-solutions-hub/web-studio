@@ -86,7 +86,7 @@ export default defineNuxtConfig({
       '/old-trade/**': { ssr: true }
     }
   },
-  ssr: true,
+  ssr: false,
 
   runtimeConfig: {
     public: {
