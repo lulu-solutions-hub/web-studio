@@ -56,6 +56,8 @@
       mt.value = display.value.width / 2;
     }
   });
+
+  const burgerClick = ref(false)
 </script>
 
 <template>
@@ -110,17 +112,15 @@
         <v-card class="h-100 rounded-0">
           <v-row class="h-100" no-gutters>
             <v-col class="d-flex flex-column" cols="12">
-              <v-card variant="text" class="d-flex flex-column h-100">
+              <v-card class="d-flex flex-column h-100 rounded-0" variant="text">
                 <v-card-title class="d-flex justify-space-between align-center">
                   <v-img class="flex-grow-0" height="65" src="/svg/footer/cat.svg" width="65"></v-img>
-                  <v-menu class="flex-0-0" open-on-click>
+                  <v-menu class="flex-0-0" open-on-click v-model="burgerClick">
                     <template v-slot:activator="{ props }">
-                      <div id="menuToggle" class="flex-0-0" v-bind="props">
-                        <input type="checkbox"/>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
+                        <div class="menu-wrapper" v-bind="props" :class="{ active: burgerClick }">
+                          <div class="menu-bar one"></div>
+                          <div class="menu-bar two"></div>
+                        </div>
                     </template>
 
                     <v-list class="pa-3" variant="elevated" width="150">
@@ -137,13 +137,13 @@
                   </v-menu>
                 </v-card-title>
 
-                <v-card-text class="d-flex justify-center flex-column align-center" >
-                  <v-img alt="Lulu web studio logo" class="w-100 flex-0-0" max-width="500"  src="/img/monitor-lulu.png"/>
+                <v-card-text class="d-flex justify-center flex-column align-center">
+                  <v-img alt="Lulu web studio logo" class="w-100 flex-0-0" max-width="500" src="/img/monitor-lulu.png"/>
                   <span class="fz-32 mb-5">Studio</span>
                   <span class="fz-18">Where Design Meets Function</span>
                 </v-card-text>
 
-                <v-img class="justify-end flex-0-0 align-self-center" src="/img/mobile-monitor-bg.png" max-width="600" width="100%"></v-img>
+                <v-img class="justify-end flex-0-0 align-self-center" max-width="600" src="/img/mobile-monitor-bg.png" width="100%"></v-img>
               </v-card>
             </v-col>
           </v-row>
@@ -173,75 +173,74 @@
     }
   }
 
-  #menuToggle {
-    display: block;
-
-    z-index: 1;
-
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  #menuToggle span {
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-
-    background: black;
-    border-radius: 3px;
-
-    z-index: 1;
-
-    transform-origin: 4px 0px;
-
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-    opacity 0.55s ease;
-  }
-
-  #menuToggle span:first-child {
-    transform-origin: 0 0;
-  }
-
-  #menuToggle span:nth-last-child(2) {
-    transform-origin: 0 100%;
-  }
-
-  #menuToggle span:nth-last-child(2) {
-    transform-origin: 0% 100%;
-  }
-
-  #menuToggle input {
-    display: block;
+  .menu-wrapper {
     width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
-
+    height: 40px;
     cursor: pointer;
+    position: relative;
+  }
 
-    opacity: 0;
-    z-index: 2;
+  .menu-bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: black;
+    left: 0%;
+  }
 
-    -webkit-touch-callout: none;
+  .one {
+    top: 0px;
+    animation-delay: 0.1s;
+    transition: all 0.3s;
+  }
+
+  .two {
+    top: 8px;
+    transition: all 0.3s;
   }
 
 
-  #menuToggle input:checked ~ span {
-    opacity: 1;
-    transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
+  @keyframes slideOut {
+    0% {
+      width: 100%;
+      left: 0%;
+      right: auto;
+    }
+
+    50% {
+      width: 0%;
+      left: 0%;
+      right: auto;
+    }
+    51% {
+      width: 0%;
+      right: 0%;
+      left: auto;
+    }
+
+    100% {
+      width: 100%;
+      right: 0%;
+      left: auto;
+    }
   }
 
-  #menuToggle input:checked ~ span:nth-last-child(3) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
-  }
 
-  #menuToggle input:checked ~ span:nth-last-child(2) {
-    transform: rotate(-45deg) translate(0, -1px);
+
+
+  /**/
+
+  .menu-wrapper:hover .menu-bar.active {
+    animation:none;
+  }
+  .active .one{
+    top: 50%;
+    left: 0%;
+    transform: rotate(45deg);
+  }
+  .active .two{
+    top: 50%;
+    left: 0%;
+    transform: rotate(-45deg);
   }
 </style>
