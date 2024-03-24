@@ -15,8 +15,8 @@
         content: 'LULU Web Studio, web design, specialist team, advanced technologies, business development, Internet advertising, website creation'
       },
       {
-        name: 'google-site-verification',
-        content: 'Rwkp0cpo7uQ4uim7VwevGQlh7zqG8ZkYndj0rb7CKRc'
+        name: "google-site-verification",
+        content: "Rwkp0cpo7uQ4uim7VwevGQlh7zqG8ZkYndj0rb7CKRc"
       },
     ]
   })
