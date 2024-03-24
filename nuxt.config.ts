@@ -22,6 +22,10 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: "https://lulu-development.netlify.app/"
+  },
+
   css: [
     "@/assets/main.css",
     "@/assets/main.scss",
@@ -40,7 +44,8 @@ export default defineNuxtConfig({
       });
     },
     'nuxt-anchorscroll',
-    'nuxt-gtag'
+    'nuxt-gtag',
+    '@nuxtjs/sitemap'
   ],
 
   gtag: {
