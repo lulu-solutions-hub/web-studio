@@ -3,6 +3,9 @@
 
   const display = ref(useDisplay());
   const { xs } = useDisplay();
+
+  const valid = ref(false);
+
   const texts = reactive([
     {
       main: "Complete creativity and individuality",
@@ -21,6 +24,27 @@
       secondary: "SEO increases brand visibility, attracts targeted traffic, reduces advertising costs, and contributes to the continuous improvement of marketing strategies."
     },
   ]);
+
+  const runtimeConfig = useRuntimeConfig();
+  const formattedText = ref(``);
+
+  const data = ref({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  watchEffect(() => {
+    formattedText.value = `Ім'я: ${ data.value.name }%0AТелефон: ${ data.value.phone }%0AПовідомлення: ${ data.value.message }`;
+  });
+
+  function sendMessage() {
+    const url = `https://api.telegram.org/bot${ runtimeConfig.public.telegramSecretApi }/sendMessage?chat_id=${ runtimeConfig.public.chatId }&message_thread_id=${ runtimeConfig.public.topicId }&parse_mode=Markdown&text=${ formattedText.value }`;
+    console.log(url)
+    const xht = new XMLHttpRequest();
+    xht.open("GET", url);
+    xht.send();
+  }
 </script>
 
 <template>
@@ -64,29 +88,33 @@
         <v-col class="rounded-s-xl" cols="12" md="6" order="1" order-md="2">
           <v-card :rounded="display.mdAndUp ? 's-xl' : ''" class="bg-blur h-100" variant="text">
             <v-container :class="{'column-left container-50': display.mdAndUp}" class="pl-4 pl-md-12 pt-16 h-100" style="padding-bottom: 77px">
-              <v-card class="h-100 d-flex flex-column" variant="text">
+              <v-card class="h-100" variant="text">
                 <!--FIELDS-->
-                <div>
-                  <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
-                  <v-text-field base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
-                  <v-text-field base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
-                  <v-text-field base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
-                  <v-checkbox class="ml-n1" color="red" density="compact">
-                    <template v-slot:label>
-                      <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
-                    </template>
-                  </v-checkbox>
-                </div>
-                <!--SPACER-->
-                <div class="d-flex flex-column flex-grow-1"/>
-                <!--SEND-->
-                <div class="d-flex justify-space-between">
-                  <div class="d-flex flex-0-0 align-center">
-                    <v-img class="mr-4" height="37" src="/svg/attach.svg" width="37"></v-img>
-                    <span class="text-white fz-20 font-weight-regular">Add file</span>
+                <v-form v-model="valid" action="/thanks" class="h-100 d-flex flex-column" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" name="contact">
+                  <div>
+                    <input name="form-name" type="hidden" value="contact"/> <input name="bot-field" type="hidden"/>
+                    <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
+                    <v-text-field v-model="data.name" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.phone" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.message" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
+                    <v-checkbox :rules="[v => !!v || 'consent is required']" class="ml-n1" color="red" density="compact">
+                      <template v-slot:label>
+                        <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
+                      </template>
+                    </v-checkbox>
                   </div>
-                  <v-btn class="ls-normal text-none fz-20" color="#FFF" min-width="144" size="large" variant="outlined">Send</v-btn>
-                </div>
+
+                  <!--SPACER-->
+                  <div class="d-flex flex-column flex-grow-1"/>
+                  <!--SEND-->
+                  <div class="d-flex justify-space-between">
+                    <div class="d-flex flex-0-0 align-center">
+                      <v-img class="mr-4" height="37" src="/svg/attach.svg" width="37"></v-img>
+                      <span class="text-white fz-20 font-weight-regular">Add file</span>
+                    </div>
+                    <v-btn :disabled="!valid" class="ls-normal text-none fz-20" color="#FFF" min-width="144" size="large" type="submit" variant="outlined" @click="sendMessage">Send</v-btn>
+                  </div>
+                </v-form>
               </v-card>
             </v-container>
           </v-card>
@@ -94,12 +122,12 @@
       </v-row>
     </v-container>
 
-    <v-sheet class="bg-transparent cat" location="top right" position="absolute" :width="xs ? 80 : 107">
-      <embed type="image/svg+xml" src="/svg/whyus/cat.svg" />
+    <v-sheet :width="xs ? 80 : 107" class="bg-transparent cat" location="top right" position="absolute">
+      <embed src="/svg/whyus/cat.svg" type="image/svg+xml"/>
     </v-sheet>
 
     <v-sheet class="bg-transparent plants" location="top right" position="absolute" style="z-index: -1">
-      <v-img :width="xs ? 170: 312" src="/svg/whyus/plants.svg" aspect-ratio="16/9" alt="lulu plants"/>
+      <v-img :width="xs ? 170: 312" alt="lulu plants" aspect-ratio="16/9" src="/svg/whyus/plants.svg"/>
     </v-sheet>
   </section>
 </template>

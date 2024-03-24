@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
 import path from "path";
 
 export default defineNuxtConfig({
@@ -22,6 +22,10 @@ export default defineNuxtConfig({
     },
   },
 
+  site: {
+    url: "https://lulu-development.netlify.app/"
+  },
+
   css: [
     "@/assets/main.css",
     "@/assets/main.scss",
@@ -36,11 +40,20 @@ export default defineNuxtConfig({
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
+        config.plugins.push(vuetify({ autoImport: true }));
+      });
     },
     'nuxt-anchorscroll',
+    'nuxt-gtag',
+    '@nuxtjs/sitemap'
   ],
+
+  gtag: {
+    id: 'G-G4RPL0YYY6',
+    config: {
+      page_title: 'Lulu Web Studio'
+    },
+  },
 
   vite: {
     vue: {
@@ -78,5 +91,13 @@ export default defineNuxtConfig({
       '/old-trade/**': { ssr: true }
     }
   },
-  ssr: true,
-})
+  ssr: false,
+
+  runtimeConfig: {
+    public: {
+      telegramSecretApi: '6846175338:AAEyv8r6hjgJQkNRuiqCvaOui_EI-jbLXiw',
+      chatId: '-1002026815522',
+      topicId: '24'
+    }
+  }
+});

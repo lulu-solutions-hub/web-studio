@@ -10,8 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/sitemap": "^5.1.2",
     "nuxt": "^3.9.3",
-    "nuxt-gtag": "^2.0.1",
+    "nuxt-gtag": "^2.0.4",
     "sass": "^1.70.0",
     "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.4.14",
