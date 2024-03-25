@@ -3,7 +3,6 @@
   import Footer from "~/components/Footer.vue";
 
   useHead({
-    link: [{ rel: 'canonical', href: '' }],
     title: "LULU Web Studio",
     meta: [
       {
