@@ -95,9 +95,9 @@
                     <input name="form-name" type="hidden" value="contact"/> <input name="bot-field" type="hidden"/>
                     <h4 class="text-white fz-32 font-weight-regular ls-normal">Discuss the project</h4>
                     <v-text-field v-model="data.name" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Name*" variant="underlined"></v-text-field>
-                    <v-text-field v-model="data.phone" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Number*" variant="underlined"></v-text-field>
+                    <v-text-field v-model="data.phone" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey mb-6" label="Number for WhatsApp or Email" variant="underlined"></v-text-field>
                     <v-text-field v-model="data.message" :rules="[v => !!v || 'Field required']" base-color="white" class="text-textGrey" label="Tell us about your idea" variant="underlined"></v-text-field>
-                    <v-checkbox :rules="[v => !!v || 'consent is required']" class="ml-n1" color="red" density="compact">
+                    <v-checkbox :rules="[v => !!v || 'consent is required']" class="ml-n1" base-color="white" color="white" density="compact">
                       <template v-slot:label>
                         <span class="text-textGrey ml-3">I consent to the processing of personal data</span>
                       </template>
@@ -107,11 +107,7 @@
                   <!--SPACER-->
                   <div class="d-flex flex-column flex-grow-1"/>
                   <!--SEND-->
-                  <div class="d-flex justify-space-between">
-                    <div class="d-flex flex-0-0 align-center">
-                      <v-img class="mr-4" height="37" src="/svg/attach.svg" width="37"></v-img>
-                      <span class="text-white fz-20 font-weight-regular">Add file</span>
-                    </div>
+                  <div class="d-flex justify-end">
                     <v-btn :disabled="!valid" class="ls-normal text-none fz-20" color="#FFF" min-width="144" size="large" type="submit" variant="outlined" @click="sendMessage">Send</v-btn>
                   </div>
                 </v-form>

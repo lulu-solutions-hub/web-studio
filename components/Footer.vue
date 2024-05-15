@@ -21,17 +21,17 @@
       name: "Contacts",
       lists: [
         { name: "Ukraine" },
-        { name: "+38 (063) 818-79-69",  link: "tel:+380638187969"},
+        { name: "+38 (098) 47-61-795",  link: "tel:+380984761795"},
         { name: "lulu.solutions.hub@gmail.com",  link: "mailto:lulu.solutions.hub@gmail.com"},
       ],
     },
-    {
-      name: "Social networks",
-      lists: [
-        { name: "Instagram", link: "", blank: true },
-        { name: "Telegram", link: "", blank: true },
-      ]
-    },
+    // {
+    //   name: "Social networks",
+    //   lists: [
+    //     { name: "Instagram", link: "", blank: true },
+    //     { name: "Telegram", link: "", blank: true },
+    //   ]
+    // },
     {
       name: "Home",
       lists: [
