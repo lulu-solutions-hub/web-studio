@@ -146,7 +146,7 @@
                   <span class="fz-18">Where Design Meets Function</span>
                 </v-card-text>
 
-                <v-img class="justify-end flex-0-0 align-self-center" max-width="600" src="/img/mobile-monitor-bg.png" width="100%"></v-img>
+                <v-img class="justify-end flex-0-0 align-self-center" src="/img/mobile-monitor-bg.svg" width="100%"></v-img>
               </v-card>
             </v-col>
           </v-row>
