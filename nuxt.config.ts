@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'LuLu Web studio',
+      link: [{ rel: 'icon', type: 'image/png', href: "/favicon.svg" }],
       meta: [
         { charset: 'utf-8' },
         {
